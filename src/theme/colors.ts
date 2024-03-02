@@ -1,6 +1,6 @@
 export const COLORS = {
   grey: "grey",
-  background: "white",
+  background: "#fbfafc",
   text: "black",
   button_color: "#83d3ba",
   error: "crimson",

@@ -7,7 +7,6 @@ import {
   TextInputContainer,
   TextInputPasswordContainer,
 } from "../../styles/global.styled";
-import { logo } from "../../data/assets";
 import { authStyles } from "./auth.style";
 import * as Yup from "yup";
 import { Formik, FormikValues } from "formik";
@@ -35,8 +34,6 @@ const Login = () => {
     <Container>
       <Row>
         <Col md={12} style={{ marginTop: 20 }}>
-          <img style={{ width: 120, height: 40 }} src={logo} alt="App Logo" />
-
           {/* Header and info */}
           <h2 style={authStyles.header}>Login</h2>
           <span style={authStyles.info}>
@@ -61,8 +58,6 @@ const Login = () => {
                   errors,
                   touched,
                   handleBlur,
-                  isValid,
-                  dirty,
                 } = formik;
                 return (
                   <form onSubmit={handleSubmit}>
@@ -85,7 +80,7 @@ const Login = () => {
                       onBlur={handleBlur}
                       data-testid="email"
                       autoComplete="off"
-                      style={{ marginTop: 30 }}
+                      style={{ marginTop: 20 }}
                     />
                     {errors.email && touched.email && (
                       <InputErrorMessage style={{ marginTop: 5 }}>
@@ -116,7 +111,7 @@ const Login = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       style={{
-                        marginTop: 30,
+                        marginTop: 20,
                       }}
                     />
                     {errors.password && touched.password && (
@@ -131,11 +126,7 @@ const Login = () => {
                       </RedirectLink>
                     </p>
 
-                    <ButtonContainer
-                      style={{ marginTop: 20 }}
-                      type="submit"
-                      disabled={!(dirty && isValid)}
-                    >
+                    <ButtonContainer style={{ marginTop: 20 }} type="submit">
                       Login
                     </ButtonContainer>
                   </form>

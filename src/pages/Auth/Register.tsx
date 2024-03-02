@@ -7,7 +7,6 @@ import {
   TextInputContainer,
   TextInputPasswordContainer,
 } from "../../styles/global.styled";
-import { logo } from "../../data/assets";
 import { authStyles } from "./auth.style";
 import * as Yup from "yup";
 import { Formik, FormikValues } from "formik";
@@ -20,9 +19,10 @@ import {
 import { login_carousel_banners } from "../../data/auth";
 
 // login form validationn schema
-const LoginSchema = Yup.object().shape({
+const RegisterSchema = Yup.object().shape({
   email: Yup.string().required("Username/Email is required"),
   password: Yup.string().required("Password is required"),
+  confirm_password: Yup.string().required("Confirm Password is required"),
 });
 
 const Login = () => {
@@ -60,24 +60,21 @@ const Login = () => {
           </Flex>
         </Col>
         <Col md={12} style={{ marginTop: 20 }}>
-          <img style={{ width: 120, height: 40 }} src={logo} alt="App Logo" />
-
           {/* Header and info */}
           <h2 style={{ ...authStyles.header }}>Sign Up</h2>
           <span style={authStyles.info}>
             Let's get you all setup, so you can use your personal account.
           </span>
 
-          {/* Login Form */}
+          {/* Register Form */}
           <section style={{ padding: 20, marginLeft: -20, marginTop: -20 }}>
             <Formik
               initialValues={{
                 email: "",
-
                 password: "",
                 confirm_password: "",
               }}
-              validationSchema={LoginSchema}
+              validationSchema={RegisterSchema}
               onSubmit={onLogin}
             >
               {(formik) => {
@@ -88,8 +85,6 @@ const Login = () => {
                   errors,
                   touched,
                   handleBlur,
-                  isValid,
-                  dirty,
                 } = formik;
                 return (
                   <form onSubmit={handleSubmit}>
@@ -112,7 +107,7 @@ const Login = () => {
                       onBlur={handleBlur}
                       data-testid="email"
                       autoComplete="off"
-                      style={{ marginTop: 30 }}
+                      style={{ marginTop: 20 }}
                     />
                     {errors.email && touched.email && (
                       <InputErrorMessage style={{ marginTop: 5 }}>
@@ -143,7 +138,7 @@ const Login = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       style={{
-                        marginTop: 30,
+                        marginTop: 20,
                       }}
                     />
                     {errors.password && touched.password && (
@@ -174,7 +169,7 @@ const Login = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       style={{
-                        marginTop: 30,
+                        marginTop: 20,
                       }}
                     />
                     {errors.password && touched.password && (
@@ -183,11 +178,7 @@ const Login = () => {
                       </InputErrorMessage>
                     )}
 
-                    <ButtonContainer
-                      style={{ marginTop: 20 }}
-                      type="submit"
-                      disabled={!(dirty && isValid)}
-                    >
+                    <ButtonContainer style={{ marginTop: 20 }} type="submit">
                       Sign Up
                     </ButtonContainer>
                   </form>

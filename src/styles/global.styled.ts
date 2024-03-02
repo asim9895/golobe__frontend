@@ -1,12 +1,12 @@
-import { Button, Input } from "antd";
+import { Input } from "antd";
 import styled from "styled-components";
 import { COLORS } from "../theme/colors";
 import { FONT_FAMILY } from "../theme/font_family";
 import { NavLink } from "react-router-dom";
 
 export const Container = styled.div`
-  margin-top: 50px;
-  padding-top: 30px;
+  margin-top: 30px;
+
   padding-left: 50px;
   padding-right: 50px;
 `;
@@ -17,7 +17,7 @@ export const TextInputContainer = styled(Input).attrs((props: any) => props)`
   font-family: ${FONT_FAMILY.montserrat} !important;
   border-radius: 10;
   font-weight: 500;
-  padding: 15px;
+  padding: 12px;
   border-color: black;
   width: ${(props) => (props?.width ? `${props?.width}%` : "100%")};
   font-size: 16px;
@@ -36,7 +36,7 @@ export const TextInputPasswordContainer = styled(Input.Password).attrs(
   font-family: ${FONT_FAMILY.montserrat} !important;
   border-radius: 10;
   font-weight: 500;
-  padding: 15px;
+  padding: 12px;
   border-color: black;
   border-width: 0.5px;
   width: ${(props) => (props?.width ? `${props?.width}%` : "100%")};
